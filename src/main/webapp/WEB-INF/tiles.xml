@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
+  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+  
+<tiles-definitions>
+    <!--Admin Menu-->
+    <definition name="com.damani.adminLayout" template="/WEB-INF/jsp/layout/adminLayout.jsp">
+        <put-attribute name="adminHeader" value="/WEB-INF/jsp/layout/adminHeader.jsp" />
+        <put-attribute name="adminMenu" value="/WEB-INF/jsp/layout/adminMenu.jsp" />
+        <put-attribute name="adminFooter" value="/WEB-INF/jsp/layout/adminFooter.jsp" />
+    </definition>
+    <definition name="com.damani.adminIndex" extends="com.damani.adminLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/view/adminIndex.jsp"></put-attribute>
+        <put-attribute name="title" value="gruhudhyog"></put-attribute>
+    </definition>
+    <!--Admin Menu-->
+   
+    <!-- Add Institute tiles -->
+    <definition name="com.damani.addInstitute" extends="com.damani.adminLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/view/Admin/addInstitute.jsp"></put-attribute>
+    </definition>
+    <!-- Add Institute tiles -->
+    
+    <!-- view Institute tiles -->
+    <definition name="com.damani.viewInstitute" extends="com.damani.adminLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/view/Admin/viewInstitute.jsp"></put-attribute>
+    </definition>
+    <!-- view Institute tiles -->
+    
+    <!-- Add Branch tiles -->
+    <definition name="com.damani.addBranch" extends="com.damani.adminLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/view/Admin/addBranch.jsp"></put-attribute>
+    </definition>
+    <!-- Add Institute tiles -->
+    
+    <!-- view Branch tiles -->
+    <definition name="com.damani.viewBranch" extends="com.damani.adminLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/view/Admin/viewBranch.jsp"></put-attribute>
+    </definition>
+    <!-- view Institute tiles -->
+    
+     <!-- Add InstituteBranch tiles -->
+    <definition name="com.damani.addInstituteBranch" extends="com.damani.adminLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/view/Admin/addInstituteBranch.jsp"></put-attribute>
+    </definition>
+    <!-- Add InstituteBranch tiles -->
+    
+    <!-- view InstituteBranch tiles -->
+    <definition name="com.damani.viewInstituteBranch" extends="com.damani.adminLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/view/Admin/viewInstituteBranch.jsp"></put-attribute>
+    </definition>
+    <!-- view InstituteBranch tiles -->
+    
+</tiles-definitions>
+

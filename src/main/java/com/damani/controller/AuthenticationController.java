@@ -1,0 +1,74 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.damani.controller;
+
+import com.damani.model.TblRole;
+import com.damani.model.TblUser;
+import com.damani.service.AuthenticationService;
+import java.math.BigInteger;
+import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+/**
+ *
+ * @author ITMCS-PC
+ */
+@Controller
+public class AuthenticationController {
+
+    @Autowired
+    AuthenticationService authenticationService;
+
+    @RequestMapping("/loginpage")
+    public String login(Model model, HttpServletRequest req) {
+        String emailAddress = req.getParameter("emailAddress");
+        String password = req.getParameter("password");
+        TblUser tbluser = new TblUser();
+        tbluser.setEmailAddress(emailAddress);
+        tbluser.setPassword(password);
+        List<TblUser> lstuser = authenticationService.loginservice(tbluser);
+        HttpSession session = req.getSession(true);
+        lstuser.get(0).setUserName(lstuser.get(0).getUserName());
+        System.out.println("role::"+lstuser.get(0).getRoleFk().getRolePk());
+        session.setAttribute("UserSession", lstuser.get(0));
+        if (!lstuser.isEmpty()) {
+                System.out.println("in controller");
+            if(lstuser.get(0).getRoleFk().getRolePk().equals(new BigInteger("1"))){
+                   return "redirect:/dashboard";
+            }if(lstuser.get(0).getRoleFk().getRolePk().equals(new BigInteger("2"))){
+           return "redirect:/loginindex";
+            }
+        }
+      return "redirect:/loginindex";
+    }
+
+    @RequestMapping("/registerpage")
+    public String register(Model model,HttpServletRequest req) {
+        TblRole tblRole = new TblRole();
+        tblRole.setRolePk(new BigInteger("2"));
+        String fullname = req.getParameter("fullname");
+        String username = req.getParameter("userName");
+        String Email = req.getParameter("emailAddress");
+        String password = req.getParameter("password");
+        String conformpassword = req.getParameter("conformpassword");
+        TblUser tblUser = new TblUser();
+        tblUser.setFullname(fullname);
+        tblUser.setUserName(username);
+        tblUser.setEmailAddress(Email);
+        tblUser.setPassword(password);
+        tblUser.setConformpassword(conformpassword);
+        tblUser.setRoleFk(tblRole);
+        authenticationService.registrationservice(tblUser);
+        return "redirect:/loginindex";
+       
+    }
+}
