@@ -21,7 +21,7 @@ public class IndexController {
     public String index() {
         return "redirect:/loginindex";
     }
-    @RequestMapping(value="/dashboard")
+   @RequestMapping(value="/dashboard")
     public String dashboard(){
         return "com.damani.adminIndex";
     }
@@ -41,5 +41,7 @@ public class IndexController {
         session.invalidate();
         return "redirect:/loginindex";
     }
+   
+    
 
 }

@@ -33,7 +33,7 @@
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="branchFk">Select Institute</label>
-                                <form:select path="instituteFk.institutePk" title="branchFk" name="instituteFk.institutePk" id="instituteFk" class="form-control select2" style="width: 100%;">
+                                <form:select path="instituteFk.institutePk"  name="instituteFk.institutePk" id="instituteFk" class="form-control select2" style="width: 100%;">
                                     <option value="-1" disabled="true" selected="true">Please Select</option>
                                     <c:forEach items='${lstInstitute}' var='entry'>
                                         <option value="${entry.institutePk}">${entry.instituteName}</option> 
