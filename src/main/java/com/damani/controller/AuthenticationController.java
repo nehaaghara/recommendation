@@ -5,11 +5,15 @@
  */
 package com.damani.controller;
 
+import com.damani.model.TblBranch;
+import com.damani.model.TblInstitute;
 import com.damani.model.TblRole;
 import com.damani.model.TblUser;
 import com.damani.service.AuthenticationService;
+import com.damani.service.ResultService;
 import java.math.BigInteger;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +31,15 @@ public class AuthenticationController {
 
     @Autowired
     AuthenticationService authenticationService;
+    
+      
+    @Autowired
+    ResultService resultService;
 
-    @RequestMapping("/loginpage")
+    ModelAndView mv=new ModelAndView();
+    
+   
+    @RequestMapping(value = "/loginpage")
     public String login(Model model, HttpServletRequest req) {
         String emailAddress = req.getParameter("emailAddress");
         String password = req.getParameter("password");
@@ -36,21 +47,30 @@ public class AuthenticationController {
         tbluser.setEmailAddress(emailAddress);
         tbluser.setPassword(password);
         List<TblUser> lstuser = authenticationService.loginservice(tbluser);
+<<<<<<< HEAD
         System.out.println("lstUser::"+lstuser);
+=======
+        System.out.println("lstUser::" + lstuser);
+>>>>>>> 8cb771aabecfe53cda6a2c8bedf1f02124e8de79
         HttpSession session = req.getSession(true);
         lstuser.get(0).setUserName(lstuser.get(0).getUserName());
-        System.out.println("role::"+lstuser.get(0).getRoleFk().getRolePk());
+        System.out.println("role::" + lstuser.get(0).getRoleFk().getRolePk());
         session.setAttribute("UserSession", lstuser.get(0));
         if (!lstuser.isEmpty()) {
-                System.out.println("in controller");
-            if(lstuser.get(0).getRoleFk().getRolePk().equals(new BigInteger("1"))){
-                   return "redirect:/dashboard";
-            }if(lstuser.get(0).getRoleFk().getRolePk().equals(new BigInteger("2"))){
-           return "redirect:/loginindex";
+            System.out.println("in controller");
+            if (lstuser.get(0).getRoleFk().getRolePk().equals(new BigInteger("1"))) {
+                
+                return "com.damani.adminIndex123";
+            }
+           if (lstuser.get(0).getRoleFk().getRolePk().equals(new BigInteger("2"))) {
+                  Map<List<TblInstitute>, List<TblBranch>> allinstituteandbranch=resultService.resultpagedataservice();
+                  model.addAttribute("allinstituteandbranch", allinstituteandbranch);
+                  return "view/User/userauthentication";
             }
         }
-      return "redirect:/loginindex";
+        return "redirect:/loginindex";
     }
+    
 
     @RequestMapping("/registerpage")
     public String register(Model model,HttpServletRequest req) {

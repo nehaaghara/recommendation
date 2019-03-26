@@ -86,6 +86,19 @@
                     <li><a href="${pageContext.servletContext.contextPath}/viewinstitutebranch"><i class="fa fa-circle-o"></i>view Institute Branch</a></li>
                 </ul>
             </li>
+            
+             <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-laptop"></i> <span>Result</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="${pageContext.servletContext.contextPath}/resultpage"><i class="fa fa-circle-o"></i>Add</a></li>
+                    <li><a href="${pageContext.servletContext.contextPath}/viewresultpage"><i class="fa fa-circle-o"></i>view</a></li>
+                </ul>
+            </li>
 
         </ul>
     </section>

@@ -33,7 +33,11 @@
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="branchFk">Select Institute</label>
+<<<<<<< HEAD
                                 <form:select path="instituteFk.institutePk" title="branchFk" name="instituteFk.institutePk" id="instituteFk" class="form-control select2" style="width: 100%;" onchange="submitInstitute();">
+=======
+                                <form:select path="instituteFk.institutePk"  name="instituteFk.institutePk" id="instituteFk" class="form-control select2" style="width: 100%;">
+>>>>>>> 8cb771aabecfe53cda6a2c8bedf1f02124e8de79
                                     <option value="-1" disabled="true" selected="true">Please Select</option>
                                     <c:forEach items='${lstInstitute}' var='entry'>
                                         <c:if test="${entry.institutePk ne tblInstituteBranch.instituteFk.institutePk}">
