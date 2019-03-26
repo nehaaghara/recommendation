@@ -36,6 +36,7 @@ public class AuthenticationController {
         tbluser.setEmailAddress(emailAddress);
         tbluser.setPassword(password);
         List<TblUser> lstuser = authenticationService.loginservice(tbluser);
+        System.out.println("lstUser::"+lstuser);
         HttpSession session = req.getSession(true);
         lstuser.get(0).setUserName(lstuser.get(0).getUserName());
         System.out.println("role::"+lstuser.get(0).getRoleFk().getRolePk());

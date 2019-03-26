@@ -32,6 +32,7 @@ public class AuthenticationRepoImpl implements  AuthenticationRepo{
 
         @Override
     public List<TblUser> loginrepo(TblUser tbluser) {
+            System.out.println("tbluser.getEmailAddress()"+tbluser.getEmailAddress()+"    "+tbluser.getPassword());
        List<TblUser> lstuser=commonDAO.findEntity(TblUser.class,"emailAddress",OperationTypeEnum.EQ,tbluser.getEmailAddress(),"password",OperationTypeEnum.EQ,tbluser.getPassword());
        return lstuser;
     }

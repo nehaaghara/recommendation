@@ -16,11 +16,14 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public interface BranchService {
-    
-    public  List<TblBranch> showbranchservice();
-    
+
+    public List<TblBranch> showbranchservice();
+
     public void addbranchservice(TblBranch tblbranch);
+
     public List<TblBranch> editbranchservice(BigInteger branchid);
+
     public void updatebranchservice(TblBranch tblbranch);
+
     public void deletebranchservice(BigInteger branchid);
 }

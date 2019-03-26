@@ -34,7 +34,7 @@
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="productFk">Branch Name</label>
-                                  <form:input path="branchName" name="branchName" class="form-control" id="branchName" title="Brand Name"  placeholder="Enter Brand" autofocus="on"/>
+                                  <form:input path="branchName" name="branchName" class="form-control" id="branchName" title="Branch Name"  placeholder="Enter Brand" autofocus="on"/>
                             </div>
                         </div>
                         <!-- /.box-body -->
