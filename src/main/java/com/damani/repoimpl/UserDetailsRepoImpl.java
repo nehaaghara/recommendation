@@ -34,7 +34,7 @@ public class UserDetailsRepoImpl implements UserDetailsRepo{
       int year =Calendar.getInstance().get(Calendar.YEAR);
        String currentyear = Integer.toString(year); 
      commonDAO.saveOrUpdate(tblUserDetails);
-        List<TblResult>  lstresultofstudent=commonDAO.findEntity(TblResult.class,"year",OperationTypeEnum.EQ,currentyear,"cutoffmarks",OperationTypeEnum.LE,tblUserDetails.getScore());
+        List<TblResult>  lstresultofstudent=commonDAO.findEntity(TblResult.class,"year",OperationTypeEnum.EQ,tblUserDetails.getYear(),"cutoffmarks",OperationTypeEnum.LE,tblUserDetails.getScore());
      return lstresultofstudent;
     }
     

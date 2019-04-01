@@ -6,18 +6,14 @@
 package com.damani.service;
 
 import com.damani.model.TblUser;
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Service;
 
 /**
  *
- * @author ITMCS-PC
+ * @author ITMCS
  */
 @Service
-public interface AuthenticationService {
-    
-    public void registrationservice(TblUser tbluser);
-    public List<TblUser> loginservice(TblUser tbluser);
-    public List<TblUser> fetchAllUser();
-    
+public interface UserProfileService {
+     public String updateProfileInformation(TblUser tblUser,HttpServletRequest request);
 }

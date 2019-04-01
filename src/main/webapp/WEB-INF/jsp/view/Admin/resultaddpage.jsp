@@ -14,7 +14,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
-<script>
+<!--<script>
    var path = '${pageContext.servletContext.contextPath}'; 
    
  
@@ -46,7 +46,7 @@
      }
      
                                                                         
-</script>.
+</script>.-->
 
 <div class="content-wrapper">
     <section class="content-header">
@@ -68,52 +68,50 @@
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="branchFk">Select Institute</label>
-                                <form:select path="instituteBranchFk.instituteFk.institutePk"  onchange="myfun(this)" name="instituteBranchFk.instituteFk.institutePk" id="instituteFk" class="form-control select2" style="width: 100%;">
+                                <form:select path="instituteBranchFk.instituteFk.institutePk"  onchange="submitInstitute()" name="instituteBranchFk.instituteFk.institutePk" id="instituteFk" class="form-control select2" style="width: 100%;">
                                     <option value="-1" disabled="true" selected="true">Please Select</option>
                                     <c:forEach var="allinstituteandbranch" items="${allinstituteandbranch}">
-                                    <c:forEach items='${allinstituteandbranch.key}' var='entry'>
-                                         <option value="${entry.institutePk}">${entry.instituteName}</option>
-                                    </c:forEach>  
-                                         </c:forEach>
+                                        <c:forEach items='${allinstituteandbranch.key}' var='entry'>
+                                            <option value="${entry.institutePk}">${entry.instituteName}</option>
+                                        </c:forEach>  
+                                    </c:forEach>
                                 </form:select>
                             </div>
                         </div>
-                       
-                            <div class="box-body">
+
+                        <div class="box-body">
                             <div class="form-group">
-                            <label for="branchFk">Select Branch</label>
-                            <form:select path="instituteBranchFk.branchFk.branchPK" title="branchFk" name="instituteBranchFk.branchFk.branchPK" id="branchFk" class="form-control select2" style="width: 100%;">
-                                <option value="-1" disabled="true" selected="true">Please Select</option>
-                                
-                            </form:select>
-                         </div> 
-                         </div>
-                        
-                         <div class="box-body">
+                                <label for="branchFk">Select Branch</label>
+                                <form:select path="instituteBranchFk.branchFk.branchPK" title="branchFk" name="instituteBranchFk.branchFk.branchPK" id="branchFk" class="form-control select2" style="width: 100%;">
+                                    <option value="-1" disabled="true" selected="true">Please Select</option>
+
+                                </form:select>
+                            </div> 
+                        </div>
+
+                        <div class="box-body">
                             <div class="form-group">
                                 <label for="branchFk">Select Year</label>
-                              
                                 <form:select path="year"  name="year" class="form-control select2" style="width: 100%;">
-                                   <jsp:useBean id="now" class="java.util.Date" />
-                                <fmt:formatDate var="year" value="${now}" pattern="yyyy" />
-                                <c:forEach var="i" begin="2000" end="${year}">
-                                            <option value="${i}">${i}</option>
-                                </c:forEach>
+                                    <jsp:useBean id="now" class="java.util.Date" />
+                                    <fmt:formatDate var="year" value="${now}" pattern="yyyy" />
+                                    <c:forEach var="i" begin="2000" end="${year}">
+                                        <option value="${i}">${i}</option>
+                                    </c:forEach>
                                 </form:select> </div>
                         </div> 
-                        
-                        
-                        
-                         <div class="form-group" >
-                                <label for="exampleInputAdminBrand">Cut Off</label>
-                                <form:input path="cutoffmarks" name="cutoffmarks" class="form-control" style="width:98%" />
-                                
-                         </div>
-                            
+
+
+
+                        <div class="form-group" style="width:95%;MARGIN: 5PX 13PX;">
+                            <label for="exampleInputAdminBrand">Cut Off</label>
+                            <form:input path="cutoffmarks" name="cutoffmarks" class="form-control"  />
+                        </div>
+
                         <!-- /.box-body -->
                         <div class="box-footer">
                             <input type="submit" name="save" value="Save & Exit" class="btn btn-primary"/>
-                           <input type="submit" name="saveAndNew" value="Save & New" class="btn btn-primary"/>
+                            <input type="submit" name="saveAndNew" value="Save & New" class="btn btn-primary"/>
                             <input type="button" name="action" value="Cancel" class="btn btn-primary" onclick="window.location.href = '${pageContext.servletContext.contextPath}/viewinstitutebranch'"/>
                         </div>
                     </form:form>
@@ -122,6 +120,7 @@
         </div>
 </div>
 </div>
+<script src="${pageContext.servletContext.contextPath}/webresource/instituteBranchJs.js"></script>
 <!-- /.content-wrapper -->
 
 

@@ -15,7 +15,10 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public interface AuthenticationRepo {
+
     public void registrationrepo(TblUser tbluser);
+
     public List<TblUser> loginrepo(TblUser tbluser);
-    
+
+    public List<TblUser> fetchAllUser();
 }

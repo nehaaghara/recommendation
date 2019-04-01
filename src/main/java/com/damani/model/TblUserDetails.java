@@ -20,27 +20,30 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "tbl_userdetails")
-public class TblUserDetails implements Serializable{
-    
+public class TblUserDetails implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "studentId", nullable = false)
     BigInteger studentid;
-    
+
     @Column(name = "studentName")
     String studentname;
-    
+
     @Column(name = "email")
     String email;
-    
+
     @Column(name = "phone")
     BigInteger phone;
-    
+
     @Column(name = "field")
     String field;
-     
+
     @Column(name = "score")
     int score;
+
+    @Column(name = "year")
+    String year;
 
     public BigInteger getStudentid() {
         return studentid;
@@ -73,6 +76,7 @@ public class TblUserDetails implements Serializable{
     public void setPhone(BigInteger phone) {
         this.phone = phone;
     }
+
     public String getField() {
         return field;
     }
@@ -88,4 +92,14 @@ public class TblUserDetails implements Serializable{
     public void setScore(int score) {
         this.score = score;
     }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+    
+    
 }

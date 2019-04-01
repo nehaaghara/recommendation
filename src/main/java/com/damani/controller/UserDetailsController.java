@@ -37,6 +37,7 @@ public class UserDetailsController {
        String email=req.getParameter("email");
        BigInteger phone=new BigInteger(req.getParameter("phone"));
        String field=req.getParameter("field");
+       String year = req.getParameter("year");
        int score=Integer.parseInt(req.getParameter("studentscore"));
        TblUserDetails tblUserDetails=new TblUserDetails();
        tblUserDetails.setStudentname(name);
@@ -44,6 +45,7 @@ public class UserDetailsController {
        tblUserDetails.setPhone(phone);
        tblUserDetails.setField(field);
        tblUserDetails.setScore(score);
+       tblUserDetails.setYear(year);
        
     List<TblResult> lstresultofstudent = userDetailsService.savedataandshowresultservice(tblUserDetails);
         System.out.println("lstresultofstudent"+lstresultofstudent.size());

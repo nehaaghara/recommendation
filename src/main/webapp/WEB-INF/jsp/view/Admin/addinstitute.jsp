@@ -33,7 +33,7 @@
                     <form:form action="${pageContext.servletContext.contextPath}/saveinstitute" modelAttribute="tblInstitutes" method="post">
                         <form:hidden path="tblInstitute.institutePk" name="tblInstitute.institutePk" />
                         <div class="box-body">
-                            <div class="form-group">${tblInstitute.institutePk}
+                            <div class="form-group">
                                 <label for="exampleInputAdminBrand">Institute Name</label>
                                 <form:input path="tblInstitute.instituteName" name="tblInstitute.instituteName" class="form-control" id="instituteName" title="Institute Name"  placeholder="Enter Institute Name" autofocus="on"/>
                                 <span for="tblInstitute.instituteName" class="help-block"><form:errors path="tblInstitute.instituteName"/></span>

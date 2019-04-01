@@ -32,5 +32,10 @@ public class AuthenticationServiceImpl implements  AuthenticationService{
         
         return authenticationRepo.loginrepo(tbluser); 
     }
+
+    @Override
+    public List<TblUser> fetchAllUser() {
+        return authenticationRepo.fetchAllUser();
+    }
     
 }

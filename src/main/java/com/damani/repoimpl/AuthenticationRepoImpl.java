@@ -9,6 +9,7 @@ import com.damani.dal.CommonDAO;
 import com.damani.dal.OperationTypeEnum;
 import com.damani.model.TblUser;
 import com.damani.repo.AuthenticationRepo;
+import java.math.BigInteger;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -35,6 +36,11 @@ public class AuthenticationRepoImpl implements  AuthenticationRepo{
             System.out.println("tbluser.getEmailAddress()"+tbluser.getEmailAddress()+"    "+tbluser.getPassword());
        List<TblUser> lstuser=commonDAO.findEntity(TblUser.class,"emailAddress",OperationTypeEnum.EQ,tbluser.getEmailAddress(),"password",OperationTypeEnum.EQ,tbluser.getPassword());
        return lstuser;
+    }
+
+    @Override
+    public List<TblUser> fetchAllUser() {
+        return commonDAO.findEntity(TblUser.class,"roleFk.rolePk",OperationTypeEnum.EQ,new BigInteger("2"));
     }
     
 }

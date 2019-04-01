@@ -31,78 +31,68 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class ResultController {
-    
+
     @Autowired
     ResultService resultService;
-    
-    ModelAndView mv=new ModelAndView();
-    
-    @RequestMapping(value="/resultpage",method=RequestMethod.GET)
-    public ModelAndView resultpagedata()
-    {
-      Map<List<TblInstitute>, List<TblBranch>> allinstituteandbranch=   resultService.resultpagedataservice();
-        
-         
-      mv.addObject("allinstituteandbranch", allinstituteandbranch);
-      mv.addObject("tblResult",new TblResult());
-      mv.setViewName("com.damani.resultaddtiles");
-      return mv;
-    }
-    
-    
-    @RequestMapping(value = "/vikashingu", method = RequestMethod.GET)
-    public ModelAndView  savedatainresulttable(@ModelAttribute("tblResult") TblResult addtblresult, HttpServletRequest req) {
-       
-         resultService.savedatainresulttableservice(addtblresult);
-        if(req.getParameter("saveAndNew") != null)
-        {
-         mv.setViewName("redirect:/resultpage");
-        }
-        else if(req.getParameter("save") != null)
-        {
-            mv.setViewName("redirect:/viewresultpage");
-        }
-        else
-        {
-            mv.setViewName("redirect:/viewresultpage");
-        }
-        
-         return mv;
-    }
-    
-    @ResponseBody
-    @RequestMapping(value = "/instituteidwisebranch", method = RequestMethod.GET)
-    public String instituteidwisebranchajax(HttpServletRequest req)
-    {
-     
-        BigInteger instituteid=new BigInteger(req.getParameter("id"));
-       return new Gson().toJson(resultService.instituteidwisebranchajaxservice(instituteid));
-    }
-    
-    @RequestMapping("/viewresultpage")
-    public ModelAndView viewresult()
-    {
-       List<TblResult> lstresult= resultService.viewresultservice();
-       mv.addObject("lstresult", lstresult);
-       mv.setViewName("com.damani.resultviewtiles");
-        return mv;
-    }
-    
-    @RequestMapping(value = "/editresult/{resultpk}", method = RequestMethod.GET)
-    public ModelAndView editresultdata(@PathVariable("resultpk") BigInteger resultid, HttpServletRequest request,Model model)
-     {
-        TblResult resultobj= resultService.editresultdataservice(resultid);
-        Map<List<TblInstitute>, List<TblBranch>> allinstituteandbranch=   resultService.resultpagedataservice();
+
+    ModelAndView mv = new ModelAndView();
+
+    @RequestMapping(value = "/resultpage", method = RequestMethod.GET)
+    public ModelAndView resultpagedata() {
+        Map<List<TblInstitute>, List<TblBranch>> allinstituteandbranch = resultService.resultpagedataservice();
         mv.addObject("allinstituteandbranch", allinstituteandbranch);
-        mv.addObject("tblResult",resultobj);
+        mv.addObject("tblResult", new TblResult());
         mv.setViewName("com.damani.resultaddtiles");
         return mv;
+    }
+
+    @RequestMapping(value = "/vikashingu", method = RequestMethod.GET)
+    public ModelAndView savedatainresulttable(@ModelAttribute("tblResult") TblResult addtblresult, HttpServletRequest req) {
+
+        resultService.savedatainresulttableservice(addtblresult);
+        if (req.getParameter("saveAndNew") != null) {
+            mv.setViewName("redirect:/resultpage");
+        } else if (req.getParameter("save") != null) {
+            mv.setViewName("redirect:/viewresultpage");
+        } else {
+            mv.setViewName("redirect:/viewresultpage");
+        }
+
+        return mv;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/instituteidwisebranch", method = RequestMethod.GET)
+    public String instituteidwisebranchajax(HttpServletRequest req) {
+
+        BigInteger instituteid = new BigInteger(req.getParameter("id"));
+        System.out.println("");
+        return new Gson().toJson(resultService.instituteidwisebranchajaxservice(instituteid));
+    }
+
+    @RequestMapping("/viewresultpage")
+    public ModelAndView viewresult() {
         
-     }
-    
-    @RequestMapping(value = "/deleteresult/{resultpk}",method=RequestMethod.GET)
-    public void deleteresultdata(@PathVariable("resultpk") BigInteger resultid,Model model)
-    {
+        List<TblResult> lstresult = resultService.viewresultservice();
+        System.out.println("lstresult"+lstresult.size());
+        mv.addObject("lstresult", lstresult);
+        mv.setViewName("com.damani.resultviewtiles");
+        return mv;
+    }
+
+    @RequestMapping(value = "/editresult/{resultpk}", method = RequestMethod.GET)
+    public ModelAndView editresultdata(@PathVariable("resultpk") BigInteger resultid, HttpServletRequest request, Model model) {
+        TblResult resultobj = resultService.editresultdataservice(resultid);
+        Map<List<TblInstitute>, List<TblBranch>> allinstituteandbranch = resultService.resultpagedataservice();
+        mv.addObject("allinstituteandbranch", allinstituteandbranch);
+        mv.addObject("tblResult", resultobj);
+        mv.setViewName("com.damani.resultaddtiles");
+        return mv;
+
+    }
+
+    @RequestMapping(value = "/deleteresult/{resultpk}", method = RequestMethod.GET)
+    public void deleteresultdata(@PathVariable("resultpk") BigInteger resultid, Model model) {
         resultService.deleteresultdataservice(resultid);
     }
 

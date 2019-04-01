@@ -31,21 +31,32 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">MAIN NAVIGATION</li>
-            
+
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-laptop"></i> <span>User</span>
+                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="${pageContext.servletContext.contextPath}/loginindex"><i class="fa fa-circle-o"></i>Login</a></li>
-                    <li><a href="${pageContext.servletContext.contextPath}/registrationindex"><i class="fa fa-circle-o"></i>Register</a></li>
+                    <li><a href="${pageContext.servletContext.contextPath}/dashboard"><i class="fa fa-circle-o"></i>view Dashboard</a></li>
+                </ul>
+            </li>
+            
+              <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-dashboard"></i> <span>Profile Information</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="${pageContext.servletContext.contextPath}/profileInformation"><i class="fa fa-circle-o"></i>Change Profile Information</a></li>
                 </ul>
             </li>
 
-           <li class="treeview">
+            <li class="treeview">
                 <a href="#">
                     <i class="fa fa-laptop"></i> <span>Branch</span>
                     <span class="pull-right-container">
@@ -58,7 +69,7 @@
                 </ul>
             </li>
 
-           
+
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-laptop"></i>
@@ -73,8 +84,8 @@
 
                 </ul>
             </li>
-            
-             <li class="treeview">
+
+            <li class="treeview">
                 <a href="#">
                     <i class="fa fa-laptop"></i> <span>Institute Branch</span>
                     <span class="pull-right-container">
@@ -86,8 +97,8 @@
                     <li><a href="${pageContext.servletContext.contextPath}/viewinstitutebranch"><i class="fa fa-circle-o"></i>view Institute Branch</a></li>
                 </ul>
             </li>
-            
-             <li class="treeview">
+
+            <li class="treeview">
                 <a href="#">
                     <i class="fa fa-laptop"></i> <span>Result</span>
                     <span class="pull-right-container">

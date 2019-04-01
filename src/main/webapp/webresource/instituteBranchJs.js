@@ -5,7 +5,6 @@
  */
 
 function submitInstitute() {
-    debugger;
     var id = $("#instituteFk").val();
     var path = 'http://localhost:8080/Recommendation';
     if (id !== "-1") {
@@ -17,7 +16,6 @@ function submitInstitute() {
             data: {'instituteFk': id},
             success: function (result) {
                 var branchJson = JSON.parse(result);
-                alert(branchJson);
                 bindBranchDropDown(branchJson);
             },
             error: function (error) {
@@ -32,10 +30,8 @@ function submitInstitute() {
 }
 
 function bindBranchDropDown(branchJson) {
-    debugger;
-    $('#branchFk').find("option[value!=-1]").remove();
+     $('#branchFk').find("option[value!=-1]").remove();
     $.each(branchJson, function (index, object) {
-        alert(object['branchFk'].branchPK);
         $('#branchFk').append('<option value=' + object['branchFk'].branchPK + '>' + object['branchFk'].branchName+ '</option>');
     });
 }

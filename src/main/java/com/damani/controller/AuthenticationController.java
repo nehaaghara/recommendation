@@ -20,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -39,7 +40,7 @@ public class AuthenticationController {
     ModelAndView mv=new ModelAndView();
     
    
-    @RequestMapping(value = "/loginpage")
+    @RequestMapping(value = "/loginpage",method=RequestMethod.POST)
     public String login(Model model, HttpServletRequest req) {
         String emailAddress = req.getParameter("emailAddress");
         String password = req.getParameter("password");
@@ -47,11 +48,6 @@ public class AuthenticationController {
         tbluser.setEmailAddress(emailAddress);
         tbluser.setPassword(password);
         List<TblUser> lstuser = authenticationService.loginservice(tbluser);
-<<<<<<< HEAD
-        System.out.println("lstUser::"+lstuser);
-=======
-        System.out.println("lstUser::" + lstuser);
->>>>>>> 8cb771aabecfe53cda6a2c8bedf1f02124e8de79
         HttpSession session = req.getSession(true);
         lstuser.get(0).setUserName(lstuser.get(0).getUserName());
         System.out.println("role::" + lstuser.get(0).getRoleFk().getRolePk());
@@ -59,8 +55,7 @@ public class AuthenticationController {
         if (!lstuser.isEmpty()) {
             System.out.println("in controller");
             if (lstuser.get(0).getRoleFk().getRolePk().equals(new BigInteger("1"))) {
-                
-                return "com.damani.adminIndex123";
+                return "redirect:/dashboard";
             }
            if (lstuser.get(0).getRoleFk().getRolePk().equals(new BigInteger("2"))) {
                   Map<List<TblInstitute>, List<TblBranch>> allinstituteandbranch=resultService.resultpagedataservice();
