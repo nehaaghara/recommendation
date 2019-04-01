@@ -51,7 +51,7 @@ public class ResultController {
     
     
     @RequestMapping(value = "/vikashingu", method = RequestMethod.GET)
-    public ModelAndView  savedatainresulttable(@ModelAttribute("tblResult") TblResult addtblresult, HttpServletRequest req) {
+    public ModelAndView savedatainresulttable(@ModelAttribute("tblResult") TblResult addtblresult, HttpServletRequest req) {
        
          resultService.savedatainresulttableservice(addtblresult);
         if(req.getParameter("saveAndNew") != null)

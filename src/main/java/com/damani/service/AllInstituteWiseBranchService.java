@@ -5,8 +5,13 @@
  */
 package com.damani.service;
 
-import com.damani.model.TblUser;
+
+import com.damani.model.TblBranch;
+import com.damani.model.TblInstitute;
+import com.damani.model.TblInstituteBranch;
+import com.damani.model.TblResult;
 import java.util.List;
+import java.util.Map;
 import org.springframework.stereotype.Service;
 
 /**
@@ -14,9 +19,8 @@ import org.springframework.stereotype.Service;
  * @author ITMCS-PC
  */
 @Service
-public interface AuthenticationService {
+public interface AllInstituteWiseBranchService {
+    public Map<TblInstitute,List<TblInstituteBranch>> AllInstituteWiseBranchservice();
+  
     
-    public void registrationservice(TblUser tbluser);
-    public List<TblUser> loginservice(TblUser tbluser);
-    public String forgotfunctionalityservice(String email,String pass,String conformpass);
 }

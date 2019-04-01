@@ -10,7 +10,7 @@
         <put-attribute name="adminMenu" value="/WEB-INF/jsp/layout/adminMenu.jsp" />
         <put-attribute name="adminFooter" value="/WEB-INF/jsp/layout/adminFooter.jsp" />
     </definition>
-    <definition name="com.damani.adminIndex123" extends="com.damani.adminLayout">
+    <definition name="com.damani.adminIndex" extends="com.damani.adminLayout">
     <put-attribute name="body" value="/WEB-INF/jsp/view/adminIndex.jsp"/>
     </definition>
    
@@ -25,14 +25,6 @@
         <put-attribute name="body" value="/WEB-INF/jsp/view/Admin/resultaddpage.jsp"></put-attribute>
     </definition>
     <!--  resultaddpage tiles -->
-    
-     <!-- userauthentication  tiles -->
-    <definition name="com.damani.userdetailstiles" extends="">
-        <put-attribute name="body" value="/WEB-INF/jsp/view/User/userauthentication.jsp"></put-attribute>
-         <put-attribute name="browserTitle" value="Error Screen" />
-    </definition>
-    <!--  userauthentication tiles -->
-    
      <!-- resultviewpage tiles -->
     <definition name="com.damani.resultviewtiles" extends="com.damani.adminLayout">
         <put-attribute name="body" value="/WEB-INF/jsp/view/Admin/viewresult.jsp"></put-attribute>

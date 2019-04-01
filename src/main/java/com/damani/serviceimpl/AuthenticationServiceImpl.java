@@ -32,5 +32,10 @@ public class AuthenticationServiceImpl implements  AuthenticationService{
         
         return authenticationRepo.loginrepo(tbluser); 
     }
+
+    @Override
+    public String forgotfunctionalityservice(String email, String pass, String conformpass) {
+      return authenticationRepo.forgotfunctionalityrepo(email, pass, conformpass);
+    }
     
 }

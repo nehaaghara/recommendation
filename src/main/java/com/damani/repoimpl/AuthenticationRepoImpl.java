@@ -36,4 +36,19 @@ public class AuthenticationRepoImpl implements  AuthenticationRepo{
        return lstuser;
     }
     
+    @Override
+    public String forgotfunctionalityrepo(String email, String pass, String conformpass) {
+       
+      List<TblUser> forgotuser=   commonDAO.findEntity(TblUser.class, "emailAddress",OperationTypeEnum.EQ,email);
+      if(forgotuser.size()>0)
+      {
+          forgotuser.get(0).setPassword(pass);
+          forgotuser.get(0).setConformpassword(conformpass);
+          commonDAO.saveOrUpdate(forgotuser.get(0));
+          return "successforgot";
+      }
+    
+      return "notsuccessforgot";
+    
+}
 }

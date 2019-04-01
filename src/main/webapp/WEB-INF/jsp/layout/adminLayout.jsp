@@ -52,7 +52,12 @@
 
 <script src="${pageContext.servletContext.contextPath}/webresource/admin/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="${pageContext.servletContext.contextPath}/webresource/admin/bower_components/jquery-ui/jquery-ui.min.js"></script>
-
+<style>
+            
+            ::-webkit-scrollbar {width: 5px;}
+            ::-webkit-scrollbar-thumb {background: #888;border-radius: 20px;}
+            div.questionAnswerScroll{padding: 5px;width: auto;height: 300px;overflow: scroll;background-color: white;border-radius: 12px;}
+ </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
