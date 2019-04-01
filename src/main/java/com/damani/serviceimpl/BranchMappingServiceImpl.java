@@ -8,11 +8,8 @@ package com.damani.serviceimpl;
 import com.damani.model.TblBranchMapping;
 import com.damani.repo.BranchMappingReposiotry;
 import com.damani.service.BranchMappingService;
-import com.damani.utility.CustomUtility;
 import java.math.BigInteger;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

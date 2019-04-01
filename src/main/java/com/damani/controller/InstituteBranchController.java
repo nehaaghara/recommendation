@@ -5,10 +5,13 @@
  */
 package com.damani.controller;
 
+import com.damani.model.TblBranchMapping;
 import com.damani.model.TblInstituteBranch;
+import com.damani.service.BranchMappingService;
 import com.damani.service.BranchService;
 import com.damani.service.InstituteBranchService;
 import com.damani.service.InstituteService;
+import com.damani.utility.CustomUtility;
 import java.math.BigInteger;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +22,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 
 /**
  *
@@ -36,6 +41,9 @@ public class InstituteBranchController {
 
     @Autowired
     InstituteBranchService instituteBranchService;
+
+    @Autowired
+    BranchMappingService branchMappingService;
 
     @RequestMapping(value = "/addinstitutebranch", method = RequestMethod.GET)
     public String addInstituteBranch(HttpServletRequest request, Model model) {
@@ -60,7 +68,7 @@ public class InstituteBranchController {
             redirectAttributes.addFlashAttribute("SuccessMessage", response);
         } else {
             response = instituteBranchService.updateInstituteBranchById(addTblInstituteBranch);
-              redirectAttributes.addFlashAttribute("UpdateMessage", response);
+            redirectAttributes.addFlashAttribute("UpdateMessage", response);
         }
         if (request.getParameter("save") != null) {
             return "redirect:/viewinstitutebranch";
@@ -74,13 +82,15 @@ public class InstituteBranchController {
     public String editInstituteBranch(Model model, @PathVariable("institutebranchPK") BigInteger institutebranchPK) {
         Object response = instituteBranchService.fetchInstituteBranchById(institutebranchPK);
         model.addAttribute("tblInstituteBranch", response);
-        return "redirect:/viewinstitutebranch";
+        model.addAttribute("lstBranches", branchService.showbranchservice());
+        model.addAttribute("lstInstitute", instituteService.fetchAllInstitute());
+        return "com.damani.addInstituteBranch";
     }
 
     @RequestMapping(value = "/deleteinstitutebranch/{institutebranchPK}", method = RequestMethod.GET)
-    public String deleteInstituteBranch(@PathVariable("institutebranchPK") BigInteger institutebranchPK,RedirectAttributes redirectAttributes) {
-       String response =  instituteBranchService.deleteInstituteBranchById(institutebranchPK);
-       redirectAttributes.addFlashAttribute("DeleteMessage",response);
+    public String deleteInstituteBranch(@PathVariable("institutebranchPK") BigInteger institutebranchPK, RedirectAttributes redirectAttributes) {
+        String response = instituteBranchService.deleteInstituteBranchById(institutebranchPK);
+        redirectAttributes.addFlashAttribute("DeleteMessage", response);
         return "redirect:/viewinstitutebranch";
     }
 
@@ -88,5 +98,24 @@ public class InstituteBranchController {
     public String updateInstituteBranch(@PathVariable("institutebranchPK") BigInteger institutebranchPK, @ModelAttribute("tblInstituteBranch") TblInstituteBranch updateInstituteBranch) {
         instituteBranchService.updateInstituteBranchById(updateInstituteBranch);
         return "redirect:/viewinstitutebranch";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/viewBranch", method = RequestMethod.POST)
+    public String viewBranch(HttpServletRequest request, Model model) {
+        try {
+            Object response = null;
+            if (null != request.getParameter("instituteFk")) {
+                BigInteger instituteFk = new BigInteger(request.getParameter("instituteFk"));
+                response = branchMappingService.fetchBranchById(instituteFk);
+                System.out.println("response::"+response);
+            }
+            String result = CustomUtility.convertToJsonString(response);
+            System.out.println("result::"+result);
+            return result;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return "redirect:/error";
+        }
     }
 }

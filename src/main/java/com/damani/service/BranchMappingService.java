@@ -16,8 +16,10 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public interface BranchMappingService {
-     public void saveBranch(List<TblBranchMapping> lstTblBranchMapping);
-     public List<TblBranchMapping> fetchBranchById(BigInteger institutePk);
-     public void updateBranchById(List<TblBranchMapping> lstTblBranchMapping,BigInteger institutePk);
-  
+
+    public void saveBranch(List<TblBranchMapping> lstTblBranchMapping);
+
+    public List<TblBranchMapping> fetchBranchById(BigInteger institutePk);
+
+    public void updateBranchById(List<TblBranchMapping> lstTblBranchMapping, BigInteger institutePk);
 }

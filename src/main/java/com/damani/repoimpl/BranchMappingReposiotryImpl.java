@@ -48,5 +48,6 @@ public class BranchMappingReposiotryImpl implements BranchMappingReposiotry{
     public void deletebranchById(List<TblBranchMapping> lsttblBranchMapping) {
         commonDAO.deleteALL(lsttblBranchMapping);
     }
-    
+
+      
 }

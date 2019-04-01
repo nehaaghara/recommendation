@@ -27,4 +27,5 @@ public interface BranchMappingReposiotry {
     public void updatebranchById(List<TblBranchMapping> lsttblBranchMapping);
 
     public void deletebranchById(List<TblBranchMapping> lsttblBranchMapping);
-}
+    
+   }

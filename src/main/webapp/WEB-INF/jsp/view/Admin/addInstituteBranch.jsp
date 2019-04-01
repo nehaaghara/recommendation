@@ -33,10 +33,19 @@
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="branchFk">Select Institute</label>
+<<<<<<< HEAD
+                                <form:select path="instituteFk.institutePk" title="branchFk" name="instituteFk.institutePk" id="instituteFk" class="form-control select2" style="width: 100%;" onchange="submitInstitute();">
+=======
                                 <form:select path="instituteFk.institutePk"  name="instituteFk.institutePk" id="instituteFk" class="form-control select2" style="width: 100%;">
+>>>>>>> 8cb771aabecfe53cda6a2c8bedf1f02124e8de79
                                     <option value="-1" disabled="true" selected="true">Please Select</option>
                                     <c:forEach items='${lstInstitute}' var='entry'>
-                                        <option value="${entry.institutePk}">${entry.instituteName}</option> 
+                                        <c:if test="${entry.institutePk ne tblInstituteBranch.instituteFk.institutePk}">
+                                            <option value="${entry.institutePk}">${entry.instituteName}</option> 
+                                        </c:if>
+                                        <c:if test="${entry.institutePk eq tblInstituteBranch.instituteFk.institutePk}">
+                                            <option value="${entry.institutePk}" selected="true">${entry.instituteName}</option> 
+                                        </c:if>
                                     </c:forEach>  
                                 </form:select>
                             </div>
@@ -44,11 +53,8 @@
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="branchFk">Select Branch</label>
-                                <form:select path="branchFk.branchPK" title="branchFk" name="branchFk.branchPK" id="branchFk" class="form-control select2" style="width: 100%;">
+                                <form:select path="branchFk.branchPK" title="branchFk" name="branchFk.branchPK" id="branchFk" class="form-control select2" style="width: 100%;" disabled="true">
                                     <option value="-1" disabled="true" selected="true">Please Select</option>
-                                    <c:forEach items='${lstBranches}' var='entry'>
-                                        <option value="${entry.branchPK}">${entry.branchName}</option> 
-                                    </c:forEach>  
                                 </form:select> </div>
                         </div>
                         <!-- /.box-body -->
@@ -63,6 +69,7 @@
         </div>
 </div>
 </div>
+<script src="${pageContext.servletContext.contextPath}/webresource/instituteBranchJs.js"></script>
 <!-- /.content-wrapper -->
 
 
