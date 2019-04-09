@@ -5,8 +5,12 @@
  */
 package com.damani.repo;
 
-import com.damani.model.TblUser;
+import com.damani.model.TblBranch;
+import com.damani.model.TblInstitute;
+import com.damani.model.TblInstituteBranch;
+import com.damani.model.TblResult;
 import java.util.List;
+import java.util.Map;
 import org.springframework.stereotype.Service;
 
 /**
@@ -14,14 +18,8 @@ import org.springframework.stereotype.Service;
  * @author ITMCS-PC
  */
 @Service
-public interface AuthenticationRepo {
+public interface AllInstituteWiseBranchRepo {
 
-    public void registrationrepo(TblUser tbluser);
-
-    public List<TblUser> loginrepo(TblUser tbluser);
-
-    public List<TblUser> fetchAllUser();
-
-    public String forgotfunctionalityrepo(String email, String pass, String conformpass);
+public Map<TblInstitute, List<TblInstituteBranch>> AllInstituteWiseBranchrepo();   
 
 }

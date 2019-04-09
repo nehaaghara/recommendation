@@ -25,6 +25,7 @@
         <put-attribute name="body" value="/WEB-INF/jsp/view/Admin/resultaddpage.jsp"></put-attribute>
     </definition>
     <!--  resultaddpage tiles -->
+
     
 <!--      userauthentication  tiles 
     <definition name="com.damani.userdetailstiles" extends="com.damani.adminLayout">
@@ -33,6 +34,7 @@
     </definition>
       userauthentication tiles -->
     
+
      <!-- resultviewpage tiles -->
     <definition name="com.damani.resultviewtiles" extends="com.damani.adminLayout">
         <put-attribute name="body" value="/WEB-INF/jsp/view/Admin/viewresult.jsp"></put-attribute>

@@ -72,9 +72,9 @@ public class ResultController {
 
     @RequestMapping("/viewresultpage")
     public ModelAndView viewresult() {
-        
+
         List<TblResult> lstresult = resultService.viewresultservice();
-        System.out.println("lstresult"+lstresult.size());
+        System.out.println("lstresult" + lstresult.size());
         mv.addObject("lstresult", lstresult);
         mv.setViewName("com.damani.resultviewtiles");
         return mv;

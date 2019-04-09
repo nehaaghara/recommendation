@@ -1,9 +1,31 @@
+
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even){background-color: #f2f2f2}
+
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+</style>
+
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -361,7 +383,6 @@
         </div>
         <!-- /.box -->
 
-
     </section>
     <!-- right col -->
 </div>
@@ -496,80 +517,170 @@
             <form method="post">
                 <h3 class="control-sidebar-heading">General Settings</h3>
 
-                <div class="form-group">
-                    <label class="control-sidebar-subheading">
-                        Report panel usage
-                        <input type="checkbox" class="pull-right" checked>
-                    </label>
 
-                    <p>
-                        Some information about this general settings option
-                    </p>
+                <!-- Chat box -->
+                <div class="questionAnswerScroll">
+                    <div class="box box-success">
+
+
+
+
+                        <h2>Institute Related Branch</h2>
+
+                        <table>
+
+                            <tr>
+                                <th>No.</th>
+                                <th>Institute Name </th>
+                                <th>Branch Name</th>
+                            </tr>
+                            <c:set var="count" value="1"/>
+                            <c:forEach var="AllInstituteWiseBranch" items="${AllInstituteWiseBranch}">
+                                <c:forEach var="branch" items="${AllInstituteWiseBranch.value}">
+                                    <tr>
+                                        <td>${count}</td>
+                                        <td>${AllInstituteWiseBranch.key.instituteName}</td>
+                                        <td>${branch.branchFk.branchName}</td>
+                                        <c:set var="count" value="${count+1}"/>
+                                    </tr>
+                                </c:forEach>
+                            </c:forEach>
+
+                        </table>
+
+
+
+
+                    </div>
                 </div>
-                <!-- /.form-group -->
+                <!-- /.box (chat box) -->
 
-                <div class="form-group">
-                    <label class="control-sidebar-subheading">
-                        Allow mail redirect
-                        <input type="checkbox" class="pull-right" checked>
-                    </label>
-
-                    <p>
-                        Other sets of options are available
-                    </p>
+                <!-- TO DO List -->
+                <div class="box box-primary">
+                    <table>
+                        <tr>
+                            <th>No.</th>
+                            <th>Institute Name</th>
+                            <th>Branch Name</th>
+                            <th>Year </th>
+                            <th>Cut Off Marks</th>
+                        </tr>
+                        <c:set var="count1" value="1"/>
+                        <c:forEach var="lstallresult" items="${lstallresult}">
+                            <tr>
+                                <td>${count1}</td>
+                                <td>${lstallresult.instituteBranchFk.instituteFk.instituteName}</td>
+                                <td>${lstallresult.instituteBranchFk.branchFk.branchName}</td>
+                                <td>${lstallresult.year}</td>
+                                <td>${lstallresult.cutoffmarks}</td>
+                                <c:set var="count1" value="${count1+1}"/>
+                            </tr>
+                        </c:forEach>
+                    </table>  
                 </div>
-                <!-- /.form-group -->
+                <!-- /.box -->
 
-                <div class="form-group">
-                    <label class="control-sidebar-subheading">
-                        Expose author name in posts
-                        <input type="checkbox" class="pull-right" checked>
-                    </label>
+                <!-- quick email widget -->
+                <div class="box box-info">
+                    <div class="box-header">
+                        <i class="fa fa-envelope"></i>
 
-                    <p>
-                        Allow the user to show his name in blog posts
-                    </p>
+                        <h3 class="box-title">Quick Email</h3>
+                        <!-- tools box -->
+                        <div class="pull-right box-tools">
+                            <button type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip"
+                                    title="Remove">
+                                <i class="fa fa-times"></i></button>
+                        </div>
+                        <!-- /. tools -->
+                    </div>
+                    <div class="box-body">
+                        <form action="#" method="post">
+
+                            <div class="form-group">
+                                <label class="control-sidebar-subheading">
+                                    Report panel usage
+                                    <input type="checkbox" class="pull-right" checked>
+                                </label>
+
+                                <p>
+                                    Some information about this general settings option
+                                </p>
+                            </div>
+                            <!-- /.form-group -->
+
+                            <div class="form-group">
+                                <label class="control-sidebar-subheading">
+                                    Allow mail redirect
+                                    <input type="checkbox" class="pull-right" checked>
+                                </label>
+
+                                <p>
+                                    Other sets of options are available
+                                </p>
+                            </div>
+                            <!-- /.form-group -->
+
+                            <div class="form-group">
+                                <label class="control-sidebar-subheading">
+                                    Expose author name in posts
+                                    <input type="checkbox" class="pull-right" checked>
+                                </label>
+
+                                <p>
+                                    Allow the user to show his name in blog posts
+                                </p>
+                            </div>
+                            <!-- /.form-group -->
+
+                            <h3 class="control-sidebar-heading">Chat Settings</h3>
+
+                            <div class="form-group">
+                                <label class="control-sidebar-subheading">
+                                    Show me as online
+                                    <input type="checkbox" class="pull-right" checked>
+                                </label>
+                            </div>
+                            <!-- /.form-group -->
+
+                            <div class="form-group">
+                                <label class="control-sidebar-subheading">
+                                    Turn off notifications
+                                    <input type="checkbox" class="pull-right">
+                                </label>
+                            </div>
+                            <!-- /.form-group -->
+
+                            <div class="form-group">
+                                <label class="control-sidebar-subheading">
+                                    Delete chat history
+                                    <a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
+                                </label>
+                            </div>
+                            <!-- /.form-group -->
+                        </form>
+                    </div>
+                    <!-- /.tab-pane -->
                 </div>
-                <!-- /.form-group -->
 
-                <h3 class="control-sidebar-heading">Chat Settings</h3>
-
-                <div class="form-group">
-                    <label class="control-sidebar-subheading">
-                        Show me as online
-                        <input type="checkbox" class="pull-right" checked>
-                    </label>
-                </div>
-                <!-- /.form-group -->
-
-                <div class="form-group">
-                    <label class="control-sidebar-subheading">
-                        Turn off notifications
-                        <input type="checkbox" class="pull-right">
-                    </label>
-                </div>
-                <!-- /.form-group -->
-
-                <div class="form-group">
-                    <label class="control-sidebar-subheading">
-                        Delete chat history
-                        <a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
-                    </label>
-                </div>
-                <!-- /.form-group -->
-            </form>
+                </aside>
+                <!-- /.control-sidebar -->
+                <!-- Add the sidebar's background. This div must be placed
+                     immediately after the control sidebar -->
+                <div class="control-sidebar-bg"></div>
         </div>
-        <!-- /.tab-pane -->
-    </div>
+
+
 </aside>
 <!-- /.control-sidebar -->
 <!-- Add the sidebar's background. This div must be placed
-     immediately after the control sidebar -->
+immediately after the control sidebar -->
 <div class="control-sidebar-bg"></div>
 </div>
 
 <script>
-    $(document).ready(function () {
-        $('#example').DataTable();
-    });
-</script>
+                    $(document).ready(function () {
+            $('#example').DataTable();
+            });
+                    console.log('${allinstituteandbranch}');
+        </script>

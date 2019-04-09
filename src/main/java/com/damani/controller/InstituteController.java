@@ -93,8 +93,7 @@ public class InstituteController {
             response = instituteService.updateInstituteById(addInstitute.getTblInstitute(), tblUser);
             redirectAttributes.addFlashAttribute("UpdateMessage", response);
             for (BigInteger branch : addInstitute.getBranches()) {
-                System.out.println("in con br");
-                for (BigInteger branchPk : addInstitute.getBranches()) {
+                  for (BigInteger branchPk : addInstitute.getBranches()) {
                     TblBranch tblBranch = new TblBranch();
                     tblBranch.setBranchPK(branchPk);
                     TblBranchMapping tblBranchMapping = new TblBranchMapping();

@@ -90,14 +90,15 @@ CREATE TABLE `tbl_institutebranch` (
   `createdBy` bigint(20) DEFAULT NULL,
   `createdOn` date DEFAULT NULL,
   PRIMARY KEY (`institutebranchPK`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_institutebranch` */
 
 insert  into `tbl_institutebranch`(`institutebranchPK`,`instituteFk`,`branchFk`,`createdBy`,`createdOn`) values 
 (1,26,1,NULL,NULL),
 (2,26,2,NULL,NULL),
-(3,26,3,NULL,NULL);
+(3,26,3,NULL,NULL),
+(4,26,1,NULL,NULL);
 
 /*Table structure for table `tbl_result` */
 
@@ -115,7 +116,7 @@ CREATE TABLE `tbl_result` (
 
 insert  into `tbl_result`(`resultPk`,`instituteBranchFk`,`year`,`cutOffMarks`) values 
 (2,3,'2019',250),
-(4,2,'2019',256),
+(4,2,'2017',256),
 (5,1,'2019',655);
 
 /*Table structure for table `tbl_role` */
@@ -146,31 +147,51 @@ CREATE TABLE `tbl_userdetails` (
   `phone` bigint(20) DEFAULT NULL,
   `field` varchar(100) DEFAULT NULL,
   `score` int(11) DEFAULT NULL,
+  `year` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`studentId`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_userdetails` */
 
-insert  into `tbl_userdetails`(`studentId`,`studentName`,`email`,`phone`,`field`,`score`) values 
-(1,'hardik','hardik@gmail.com',8140321630,'Civil',565),
-(3,'vikas','hinguvikas@2214.com',951753456,'Civil',898),
-(6,'path','admin123@gmail.com',1213546789,'Civil',898),
-(7,'parth','admin@gmail.com',8140321630,'Mechanical',898),
-(8,'parth','admin@gmail.com',8140321630,'Mechanical',898),
-(9,'parth','admin@gmail.com',8140321630,'Mechanical',898),
-(10,'parth','admin@gmail.com',8140321630,'Mechanical',898),
-(11,'yogesh','neha@gmail.com',8140321630,'Civil',200),
-(12,'yogesh','neha@gmail.com',8140321630,'Civil',200),
-(13,'yogesh','neha@gmail.com',8140321630,'Civil',200),
-(14,'yogesh','neha@gmail.com',8140321630,'Civil',200),
-(15,'yogesh','neha@gmail.com',8140321630,'Civil',200),
-(16,'yogesh','neha@gmail.com',8140321630,'Civil',200),
-(17,'yogesh1','hardik@gmail.com',1213546789,'Mechanical',1000),
-(18,'yogesh1','hardik@gmail.com',1213546789,'Mechanical',1000),
-(19,'yogesh1','hardik@gmail.com',1213546789,'Mechanical',1000),
-(20,'hemal','hemal@gmail.com',1213546789,'IT',2000),
-(21,'Yashvi Aghara','yashvi@gmail.com',346556,'Civil',300),
-(22,'Yashvi Aghara','yashvi@gmail.com',346556,'Civil',300);
+insert  into `tbl_userdetails`(`studentId`,`studentName`,`email`,`phone`,`field`,`score`,`year`) values 
+(1,'hardik','hardik@gmail.com',8140321630,'Civil',565,NULL),
+(3,'vikas','hinguvikas@2214.com',951753456,'Civil',898,NULL),
+(6,'path','admin123@gmail.com',1213546789,'Civil',898,NULL),
+(7,'parth','admin@gmail.com',8140321630,'Mechanical',898,NULL),
+(8,'parth','admin@gmail.com',8140321630,'Mechanical',898,NULL),
+(9,'parth','admin@gmail.com',8140321630,'Mechanical',898,NULL),
+(10,'parth','admin@gmail.com',8140321630,'Mechanical',898,NULL),
+(11,'yogesh','neha@gmail.com',8140321630,'Civil',200,NULL),
+(12,'yogesh','neha@gmail.com',8140321630,'Civil',200,NULL),
+(13,'yogesh','neha@gmail.com',8140321630,'Civil',200,NULL),
+(14,'yogesh','neha@gmail.com',8140321630,'Civil',200,NULL),
+(15,'yogesh','neha@gmail.com',8140321630,'Civil',200,NULL),
+(16,'yogesh','neha@gmail.com',8140321630,'Civil',200,NULL),
+(17,'yogesh1','hardik@gmail.com',1213546789,'Mechanical',1000,NULL),
+(18,'yogesh1','hardik@gmail.com',1213546789,'Mechanical',1000,NULL),
+(19,'yogesh1','hardik@gmail.com',1213546789,'Mechanical',1000,NULL),
+(20,'hemal','hemal@gmail.com',1213546789,'IT',2000,NULL),
+(21,'Yashvi Aghara','yashvi@gmail.com',346556,'Civil',300,NULL),
+(22,'Yashvi Aghara','yashvi@gmail.com',346556,'Civil',300,NULL),
+(23,'Yashvi Aghara','yashvi@gmail.com',346556,'Computer Science',300,NULL),
+(24,'Yashvi Aghara','yashvi@gmail.com',346556,'Civil',300,NULL),
+(25,'Yashvi Aghara','yashvi@gmail.com',346556,'Computer Science',300,'2006'),
+(26,'Yashvi Aghara','yashvi@gmail.com',346556,'Computer Science',600,'2006'),
+(27,'Yashvi Aghara','yashvi@gmail.com',346556,'Computer Science',600,'2019'),
+(28,'Yashvi Aghara','yashvi@gmail.com',346556,'IT',600,'2016'),
+(29,'Yashvi Aghara','yashvi@gmail.com',346556,'IT',600,'2016'),
+(30,'Yashvi Aghara','yashvi@gmail.com',346556,'IT',600,'2016'),
+(31,'Yashvi Aghara','yashvi@gmail.com',346556,'IT',300,'2016'),
+(32,'Yashvi Aghara','yashvi@gmail.com',346556,'IT',300,'2016'),
+(33,'Yashvi Aghara','yashvi@gmail.com',346556,'Computer Science',300,'2012'),
+(34,'Yashvi Aghara','yashvi@gmail.com',346556,'Computer Science',600,'2019'),
+(35,'Yashvi Aghara','yashvi@gmail.com',346556,'Computer Science',700,'2019'),
+(36,'Yashvi Aghara','yashvi@gmail.com',346556,'Computer Science',700,'2019'),
+(37,'Yashvi Aghara','yashvi@gmail.com',346556,'Computer Science',700,'2019'),
+(38,'Yashvi Aghara','yashvi@gmail.com',346556,'Computer Science',700,'2017'),
+(39,'Yashvi Aghara','yashvi@gmail.com',346556,'Computer Science',700,'2017'),
+(40,'Yashvi Aghara','yashvi@gmail.com',346556,'Computer Science',300,'2019'),
+(41,'Yashvi Aghara','yashvi@gmail.com',346556,'Computer Science',700,'2019');
 
 /*Table structure for table `tbluser` */
 
@@ -185,16 +206,15 @@ CREATE TABLE `tbluser` (
   `conformPassword` varchar(20) DEFAULT NULL,
   `roleFk` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`userid`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbluser` */
 
 insert  into `tbluser`(`userid`,`fullName`,`userName`,`emailAddress`,`password`,`conformPassword`,`roleFk`) values 
 (1,'Admin','admin','admin123@gmail.com','123','123',1),
-(2,'hingu vikas nileshbhai','vikashingu','vikas@gmail.com','vikas123','vikas123',2),
+(2,'Vikas','vikashingu','vikas@gmail.com','vikas123','vikas123',2),
 (12,'Neha','neha','neha@gmail.com','123','123',2),
-(14,'Yashvi ','yashvi','yashvi@gmail.com','123','123',2),
-(15,'hingu vikas nileshbhai','vikas','vikas@gmail.com','vikas','vikas',1);
+(14,'Yashvi ','yashvi','yashvi@gmail.com','123','123',2);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

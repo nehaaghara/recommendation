@@ -17,11 +17,11 @@ import org.springframework.stereotype.Service;
  * @author ITMCS-PC
  */
 @Service
-public class AuthenticationServiceImpl implements  AuthenticationService{
+public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Autowired
     AuthenticationRepo authenticationRepo;
-    
+
     @Override
     public void registrationservice(TblUser tbluser) {
         authenticationRepo.registrationrepo(tbluser);
@@ -29,13 +29,18 @@ public class AuthenticationServiceImpl implements  AuthenticationService{
 
     @Override
     public List<TblUser> loginservice(TblUser tbluser) {
-        
-        return authenticationRepo.loginrepo(tbluser); 
+
+        return authenticationRepo.loginrepo(tbluser);
     }
 
     @Override
     public List<TblUser> fetchAllUser() {
         return authenticationRepo.fetchAllUser();
     }
-    
+
+    public String forgotfunctionalityservice(String email, String pass, String conformpass) {
+        return authenticationRepo.forgotfunctionalityrepo(email, pass, conformpass);
+
+    }
+
 }

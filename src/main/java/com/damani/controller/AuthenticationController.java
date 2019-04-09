@@ -22,6 +22,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  *
@@ -40,8 +41,9 @@ public class AuthenticationController {
     ModelAndView mv=new ModelAndView();
     
    
-    @RequestMapping(value = "/loginpage",method=RequestMethod.POST)
-    public String login(Model model, HttpServletRequest req) {
+
+    @RequestMapping(value = "/loginpage")
+    public String login(Model model, HttpServletRequest req,RedirectAttributes redirectAttributes) {
         String emailAddress = req.getParameter("emailAddress");
         String password = req.getParameter("password");
         TblUser tbluser = new TblUser();
@@ -86,5 +88,30 @@ public class AuthenticationController {
         authenticationService.registrationservice(tblUser);
         return "redirect:/loginindex";
        
+    }
+    
+      @RequestMapping(value = "/forgotproccess")
+    public ModelAndView forgotfunctionality(HttpServletRequest req) {
+        String email = req.getParameter("emailAddress");
+        String pass = req.getParameter("password");
+        String conformpass = req.getParameter("conformpassword");
+        if (pass.equals(conformpass)) {
+            String forgotuser = authenticationService.forgotfunctionalityservice(email, pass, conformpass);
+            if(forgotuser.equals("successforgot")){
+                  mv.addObject("result", "succ");
+                  mv.addObject("forgotuser", forgotuser);
+                  mv.setViewName("redirect:/loginindex");
+            }
+            else
+            {
+                 mv.addObject("result", "notvelidemailid");
+                 mv.setViewName("redirect:/forgotpageindex");
+            }
+          
+        } else {
+            mv.addObject("result", "notsucc");
+            mv.setViewName("redirect:/forgotpageindex");
+        }
+        return mv;        
     }
 }
